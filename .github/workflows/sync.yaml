@@ -20,6 +20,7 @@ jobs:
           persist-credentials: false
 
       - name: Add upstream
+        id: latest_tag
         run: |
           git remote add upstream https://github.com/wessamlauf/homeassistant-frosted-glass-themes.git
           git fetch upstream --tags
@@ -40,6 +41,7 @@ jobs:
           rm -rf patches/
 
       - name: Commit
+        id: commit_patch
         run: |
           if ! git diff --quiet; then
             git config user.name "github-actions"
