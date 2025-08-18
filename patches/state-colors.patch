@@ -1,0 +1,96 @@
+diff --git a/themes/Frosted Glass Dark Lite.yaml b/themes/Frosted Glass Dark Lite.yaml
+index 054b78e..a160b1d 100644
+--- a/themes/Frosted Glass Dark Lite.yaml	
++++ b/themes/Frosted Glass Dark Lite.yaml	
+@@ -366,6 +366,8 @@ Frosted Glass Dark Lite:
+   label-badge-yellow: 'rgb(255, 219, 117)'
+   label-badge-grey: 'rgb(83, 90, 103)'
+   ha-chip-text-color: 'rgb(234, 235, 238)'
++  state-fan-active-color: '#ffbc3d'
++  state-cover-active-color: '#ffbc3d'
+ 
+   primary-color: 'rgb(106, 116, 211)'
+   dark-primary-color: 'rgb(106, 116, 211)'
+diff --git a/themes/Frosted Glass Dark.yaml b/themes/Frosted Glass Dark.yaml
+index ee46b17..467052b 100644
+--- a/themes/Frosted Glass Dark.yaml	
++++ b/themes/Frosted Glass Dark.yaml	
+@@ -394,6 +394,8 @@ Frosted Glass Dark:
+   label-badge-yellow: 'rgb(255, 219, 117)'
+   label-badge-grey: 'rgb(83, 90, 103)'
+   ha-chip-text-color: 'rgb(234, 235, 238)'
++  state-fan-active-color: '#ffbc3d'
++  state-cover-active-color: '#ffbc3d'
+ 
+   primary-color: 'rgb(106, 116, 211)'
+   dark-primary-color: 'rgb(106, 116, 211)'
+diff --git a/themes/Frosted Glass Light Lite.yaml b/themes/Frosted Glass Light Lite.yaml
+index 9e4b46e..db4b3c4 100644
+--- a/themes/Frosted Glass Light Lite.yaml	
++++ b/themes/Frosted Glass Light Lite.yaml	
+@@ -368,6 +368,8 @@ Frosted Glass Light Lite:
+   label-badge-yellow: 'rgb(255, 219, 117)'
+   label-badge-grey: 'rgb(83, 90, 103)'
+   ha-chip-text-color: 'rgb(0, 0, 0)'
++  state-fan-active-color: '#ffbc3d'
++  state-cover-active-color: '#ffbc3d'
+ 
+   primary-color: 'rgb(106, 116, 211)'
+   dark-primary-color: 'rgb(106, 116, 211)'
+diff --git a/themes/Frosted Glass Light.yaml b/themes/Frosted Glass Light.yaml
+index 7399b9b..0b32836 100644
+--- a/themes/Frosted Glass Light.yaml	
++++ b/themes/Frosted Glass Light.yaml	
+@@ -397,6 +397,8 @@ Frosted Glass Light:
+   label-badge-yellow: 'rgb(255, 219, 117)'
+   label-badge-grey: 'rgb(83, 90, 103)'
+   ha-chip-text-color: 'rgb(0, 0, 0)'
++  state-fan-active-color: '#ffbc3d'
++  state-cover-active-color: '#ffbc3d'
+ 
+   primary-color: 'rgb(106, 116, 211)'
+   dark-primary-color: 'rgb(106, 116, 211)'
+diff --git a/themes/Frosted Glass Lite.yaml b/themes/Frosted Glass Lite.yaml
+index 65d95bb..709cdbf 100644
+--- a/themes/Frosted Glass Lite.yaml	
++++ b/themes/Frosted Glass Lite.yaml	
+@@ -370,6 +370,8 @@ Frosted Glass Lite:
+       label-badge-yellow: 'rgb(255, 219, 117)'
+       label-badge-grey: 'rgb(83, 90, 103)'
+       ha-chip-text-color: 'rgb(0, 0, 0)'
++      state-fan-active-color: '#ffbc3d'
++      state-cover-active-color: '#ffbc3d'
+ 
+       primary-color: 'rgb(106, 116, 211)'
+       dark-primary-color: 'rgb(106, 116, 211)'
+@@ -813,6 +815,8 @@ Frosted Glass Lite:
+       label-badge-yellow: 'rgb(255, 219, 117)'
+       label-badge-grey: 'rgb(83, 90, 103)'
+       ha-chip-text-color: 'rgb(234, 235, 238)'
++      state-fan-active-color: '#ffbc3d'
++      state-cover-active-color: '#ffbc3d'
+ 
+       primary-color: 'rgb(106, 116, 211)'
+       dark-primary-color: 'rgb(106, 116, 211)'
+diff --git a/themes/Frosted Glass.yaml b/themes/Frosted Glass.yaml
+index a4b0c5d..4ce262c 100644
+--- a/themes/Frosted Glass.yaml	
++++ b/themes/Frosted Glass.yaml	
+@@ -399,6 +399,8 @@ Frosted Glass:
+       label-badge-yellow: 'rgb(255, 219, 117)'
+       label-badge-grey: 'rgb(83, 90, 103)'
+       ha-chip-text-color: 'rgb(0, 0, 0)'
++      state-fan-active-color: '#ffbc3d'
++      state-cover-active-color: '#ffbc3d'
+ 
+       primary-color: 'rgb(106, 116, 211)'
+       dark-primary-color: 'rgb(106, 116, 211)'
+@@ -871,6 +873,8 @@ Frosted Glass:
+       label-badge-yellow: 'rgb(255, 219, 117)'
+       label-badge-grey: 'rgb(83, 90, 103)'
+       ha-chip-text-color: 'rgb(234, 235, 238)'
++      state-fan-active-color: '#ffbc3d'
++      state-cover-active-color: '#ffbc3d'
+ 
+       primary-color: 'rgb(106, 116, 211)'
+       dark-primary-color: 'rgb(106, 116, 211)'
