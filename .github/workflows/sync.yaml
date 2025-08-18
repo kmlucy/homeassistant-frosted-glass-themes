@@ -43,10 +43,11 @@ jobs:
       - name: Commit
         id: commit_patch
         run: |
-          if ! git diff --quiet; then
-            git config user.name "github-actions"
-            git config user.email "github-actions@github.com"
-            git commit -am "Apply custom patch"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git commit -am "Apply custom patch"
+          LAST_PATCHED_TAG=$(git tag --list "v*-patched" | sort -V | tail -n1 )
+          if ! git diff --quiet $LAST_PATCHED_TAG..HEAD; then
             echo "patch_committed=true" >> $GITHUB_OUTPUT
           else
             echo "patch_committed=false" >> $GITHUB_OUTPUT
