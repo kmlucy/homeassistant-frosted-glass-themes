@@ -1,0 +1,50 @@
+name: Sync with upstream and apply patch
+
+on:
+  push:
+    branches:
+      - patches
+  schedule:
+    - cron: "0 2 * * *" # every day at 2 AM UTC 
+  workflow_dispatch: # manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          ref: patches
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Add upstream
+        run: |
+          git remote add upstream https://github.com/wessamlauf/homeassistant-frosted-glass-themes.git
+          git fetch upstream
+
+      - name: Sync main with upstream
+        run: |
+          git checkout main
+          git reset --hard upstream/main
+
+      - name: Apply patch
+        run: |
+          git fetch origin patches:patches
+          git checkout patches -- patches/
+          git apply patches/state-colors.patch
+          if [ $? -ne 0 ]; then
+            echo "Patch failed to apply"
+            exit 1
+          fi
+          rm -rf patches/
+
+      - name: Commit and push changes
+        run: |
+          if ! git diff --quiet; then
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git commit -am "Apply custom patch"
+            git push origin main
+          fi
