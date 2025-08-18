@@ -1,29 +1,3 @@
-diff --git a/.github/workflows/validate.yaml b/.github/workflows/validate.yaml
-deleted file mode 100644
-index ed77719..0000000
---- a/.github/workflows/validate.yaml
-+++ /dev/null
-@@ -1,19 +0,0 @@
--name: Validate
--
--on:
--  push:
--  pull_request:
--  schedule:
--    - cron: "0 0 * * *"
--  workflow_dispatch:
--
--permissions: {}
--
--jobs:
--  validate-hacs:
--    runs-on: "ubuntu-latest"
--    steps:
--      - name: HACS validation
--        uses: "hacs/action@main"
--        with:
--          category: "theme"
-\ No newline at end of file
 diff --git a/themes/Frosted Glass Dark Lite.yaml b/themes/Frosted Glass Dark Lite.yaml
 index 054b78e..a160b1d 100644
 --- a/themes/Frosted Glass Dark Lite.yaml	
