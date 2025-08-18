@@ -26,8 +26,7 @@ jobs:
 
       - name: Sync main with upstream
         run: |
-          git checkout upstream/main
-          git reset --hard upstream/main
+          git checkout -B main upstream/main
 
       - name: Apply patch
         run: |
@@ -46,5 +45,5 @@ jobs:
             git config user.name "github-actions"
             git config user.email "github-actions@github.com"
             git commit -am "Apply custom patch"
-            git push origin main
+            git push origin main:main
           fi
