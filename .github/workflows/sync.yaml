@@ -63,3 +63,11 @@ jobs:
       - name: Skip push
         if: steps.commit_patch.outputs.patch_committed == 'false'
         run: echo "No patch changes detected. Skipping push and tag creation."
+
+      - name: Create GitHub release
+        if: steps.commit_patch.outputs.patch_committed == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.latest_tag.outputs.latest_tag }}-patched
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
