@@ -38,6 +38,7 @@ jobs:
             echo "Patch failed to apply"
             exit 1
           fi
+          git checkout patches -- .github/
           rm -rf patches/
 
       - name: Commit
