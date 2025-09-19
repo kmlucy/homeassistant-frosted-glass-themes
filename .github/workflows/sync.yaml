@@ -1,0 +1,75 @@
+name: Sync with upstream and apply patch
+
+on:
+  push:
+    branches:
+      - patches
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          ref: patches
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Add upstream
+        id: latest_tag
+        run: |
+          git remote add upstream https://github.com/wessamlauf/homeassistant-frosted-glass-themes.git
+          git fetch upstream --tags
+          LATEST_TAG=$(git ls-remote --tags upstream | awk -F/ '{print $3}' | grep -v '{}' | sort -V | tail -n 1 )
+          echo "latest_tag=$LATEST_TAG"
+          git checkout -B main $LATEST_TAG
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+
+      - name: Apply patch
+        run: |
+          git fetch origin patches:patches
+          git checkout patches -- patches/
+          git apply patches/state-colors.patch
+          if [ $? -ne 0 ]; then
+            echo "Patch failed to apply"
+            exit 1
+          fi
+          git checkout patches -- .github/
+          rm -rf patches/
+
+      - name: Commit
+        id: commit_patch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git commit -am "Apply custom patch"
+          LAST_PATCHED_TAG=$(git tag --list "v*-patched" | sort -V | tail -n1 )
+          if ! git diff --quiet $LAST_PATCHED_TAG..HEAD; then
+            echo "patch_committed=true" >> $GITHUB_OUTPUT
+          else
+            echo "patch_committed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push
+        if: steps.commit_patch.outputs.patch_committed == 'true'
+        run: |
+          PATCHED_TAG="${{ steps.latest_tag.outputs.latest_tag }}-patched"
+          git tag -f "$PATCHED_TAG"
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main:main "$PATCHED_TAG"
+          echo "Main branch and tag $PATCHED_TAG pushed to fork"
+
+      - name: Skip push
+        if: steps.commit_patch.outputs.patch_committed == 'false'
+        run: echo "No patch changes detected. Skipping push and tag creation."
+
+      - name: Create GitHub release
+        if: steps.commit_patch.outputs.patch_committed == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.latest_tag.outputs.latest_tag }}-patched
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
