@@ -426,6 +426,8 @@ Frosted Glass Light:
   label-badge-yellow: 'rgb(255, 219, 117)'
   label-badge-grey: 'rgb(83, 90, 103)'
   ha-chip-text-color: 'rgb(0, 0, 0)'
+  state-fan-active-color: '#ffbc3d'
+  state-cover-active-color: '#ffbc3d'
 
   primary-color: 'rgb(106, 116, 211)'
   dark-primary-color: 'rgb(106, 116, 211)'
