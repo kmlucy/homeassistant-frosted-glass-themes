@@ -633,3 +633,6 @@ Frosted Glass Dark Lite:
   modes:
     dark:
       app-theme-color: 'rgb(2, 6, 11)'                                                      # 1.2 Glass – header theme color hint for browsers
+
+  state-fan-active-color: "#ffbc3d"
+  state-cover-active-color: "#ffbc3d"

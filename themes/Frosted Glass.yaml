@@ -1289,3 +1289,6 @@ Frosted Glass:
 
 
       # --- End of Theme ---
+
+  state-fan-active-color: "#ffbc3d"
+  state-cover-active-color: "#ffbc3d"
